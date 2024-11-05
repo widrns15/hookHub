@@ -1,12 +1,17 @@
-import { useClick } from "./hooks/useClick";
+import { useConfirm } from "./hooks/useConfirm";
 
-// 활용 예시 - useTabs
+// 활용 예시 - useConfirm
 const App = () => {
-  const sayHello = () => console.log("say Hello");
-  const title = useClick(sayHello);
+  const deleteWorld = () => console.log("Done!!");
+  const abort = () => console.log("Aborted!");
+  const confirmDelete = useConfirm(
+    "Are you sure you want to delete",
+    deleteWorld,
+    abort
+  );
   return (
     <>
-      <hi ref={title}>hi</hi>
+      <button onClick={confirmDelete}>Delete</button>
     </>
   );
 };
