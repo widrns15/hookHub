@@ -1,19 +1,30 @@
-import "./App.css";
+import React from "react";
+import { useTabs } from "./hooks/useTabs";
 
-import { useInput } from "./hooks/useInput";
-
-// 활용 예시 - useInput
-function App() {
-  const maxLenAndIncludeTag = (value) =>
-    value.length <= 10 && !value.includes("@");
-  const name = useInput("Mr. ", maxLenAndIncludeTag);
+// 활용 예시 - useTabs
+const App = () => {
+  const content = [
+    {
+      tab: "Section 1",
+      content: "I'm the content of the Section 1",
+    },
+    {
+      tab: "Section 2",
+      content: "I'm the content of the Section 2",
+    },
+  ];
+  const { currentItem, changeItem } = useTabs(0, content);
 
   return (
     <>
-      <h1>Hello</h1>
-      <input placeholder="Name" {...name} />
+      {content.map((section, index) => (
+        <React.Fragment key={index}>
+          <button onClick={() => changeItem(index)}>{section.tab}</button>
+        </React.Fragment>
+      ))}
+      <div>{currentItem.content}</div>
     </>
   );
-}
+};
 
 export default App;
