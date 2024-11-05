@@ -1,28 +1,12 @@
-import React from "react";
-import { useTabs } from "./hooks/useTabs";
+import { useTitle } from "./hooks/useTitle";
 
 // 활용 예시 - useTabs
 const App = () => {
-  const content = [
-    {
-      tab: "Section 1",
-      content: "I'm the content of the Section 1",
-    },
-    {
-      tab: "Section 2",
-      content: "I'm the content of the Section 2",
-    },
-  ];
-  const { currentItem, changeItem } = useTabs(0, content);
-
+  const titleUpdater = useTitle("Loading...");
+  setTimeout(() => titleUpdater("home"), 5000);
   return (
     <>
-      {content.map((section, index) => (
-        <React.Fragment key={index}>
-          <button onClick={() => changeItem(index)}>{section.tab}</button>
-        </React.Fragment>
-      ))}
-      <div>{currentItem.content}</div>
+      <div>hi</div>
     </>
   );
 };
