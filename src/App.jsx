@@ -1,17 +1,12 @@
-import { useConfirm } from "./hooks/useConfirm";
+import { usePreventLeave } from "./hooks/usePreventLeave";
 
-// 활용 예시 - useConfirm
+// 활용 예시 - usePreventLeave
 const App = () => {
-  const deleteWorld = () => console.log("Done!!");
-  const abort = () => console.log("Aborted!");
-  const confirmDelete = useConfirm(
-    "Are you sure you want to delete",
-    deleteWorld,
-    abort
-  );
+  const { enablePrevent, disablePrevent } = usePreventLeave();
   return (
     <>
-      <button onClick={confirmDelete}>Delete</button>
+      <button onClick={enablePrevent}>Protect</button>
+      <button onClick={disablePrevent}> Unprotect</button>
     </>
   );
 };
