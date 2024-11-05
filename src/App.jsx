@@ -1,17 +1,17 @@
-import { useState } from "react";
 import "./App.css";
 
+import { useInput } from "./hooks/useInput";
+
+// 활용 예시 - useInput
 function App() {
-  const [count, setCount] = useState(0);
+  const maxLenAndIncludeTag = (value) =>
+    value.length <= 10 && !value.includes("@");
+  const name = useInput("Mr. ", maxLenAndIncludeTag);
 
   return (
     <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      <h1>Hello</h1>
+      <input placeholder="Name" {...name} />
     </>
   );
 }
