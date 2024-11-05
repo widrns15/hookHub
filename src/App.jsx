@@ -1,12 +1,12 @@
-import { useTitle } from "./hooks/useTitle";
+import { useClick } from "./hooks/useClick";
 
 // 활용 예시 - useTabs
 const App = () => {
-  const titleUpdater = useTitle("Loading...");
-  setTimeout(() => titleUpdater("home"), 5000);
+  const sayHello = () => console.log("say Hello");
+  const title = useClick(sayHello);
   return (
     <>
-      <div>hi</div>
+      <hi ref={title}>hi</hi>
     </>
   );
 };
