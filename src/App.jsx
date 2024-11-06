@@ -1,12 +1,12 @@
-import { usePreventLeave } from "./hooks/usePreventLeave";
+import { useBeforeLeave } from "./hooks/useBeforeLeave";
 
-// 활용 예시 - usePreventLeave
+// 활용 예시 - useBeforeLeave
 const App = () => {
-  const { enablePrevent, disablePrevent } = usePreventLeave();
+  const begForLife = () => console.log("plz don't leave");
+  useBeforeLeave(begForLife);
   return (
     <>
-      <button onClick={enablePrevent}>Protect</button>
-      <button onClick={disablePrevent}> Unprotect</button>
+      <h1>Hello</h1>
     </>
   );
 };
